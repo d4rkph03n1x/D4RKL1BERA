@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Web Programming , Game Programming , Mobil App Programming">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>D4RK L1BERA | Ana Sayfa</title>
+    
+    <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+
+:root{
+    --main-color: #e83000;
+    --black-color: #000000;
+    --border: 0.1rem solid rgba(255, 255, 255, 0.4);
+}
+
+*{
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.2s ease;
+}
+
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;    
+}
+
+html::-webkit-scrollbar{
+    width: 0.8rem;
+    background-color: white;
+}
+
+html::-webkit-scrollbar-track{
+    background-color: black;
+}
+
+html::-webkit-scrollbar-thumb{
+    border-radius: 3rem;
+    background-color: #7a00ff;
+}
+
+body{
+    background-color: #6500ff;
+}
+
+section{
+    padding: 3.5rem 7%;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 2rem 3.75rem;
+    border-radius: 30rem;
+    font-size: 1.7rem;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: #00abff;
+    color: black;
+}
+
+.heading{
+    color: white;
+    text-transform: uppercase;
+    font-size: 4rem;
+    margin-bottom: 3.5rem;
+    border-bottom: 0.1rem solid white;
+}
+
+.heading span{
+    text-transform: uppercase;
+    color: black;
+}
+
+.search-input{
+    font-size: 1.6rem;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 1rem;
+    text-transform: none;
+    border-radius: 3rem;
+}
+
+
+.header .search-form{
+    position: absolute;
+    top: 115%;
+    right: 7%;
+    background-color: #ffffff;
+    width: 50rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    border-radius: 3rem;
+    box-shadow: 0px 0px 25px 2px rgb(0 0 0 / 75%);
+    transform: scaleY(0);
+}
+
+.header .search-form.active{
+    transform: scaleY(1);
+}
+
+.header .search-form i{
+    cursor: pointer;
+    font-size: 2.2rem;
+    margin-right: 1.5rem;
+    color: #000000;
+}
+
+
+.header .search-form input{
+    width: 100%;
+}
+
+.logo img {
+    height: 12rem;
+}
+
+.header{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    margin: 2rem 7%;
+    border-radius: 30rem;
+    box-shadow: 0px 0px 17px -2px rgba(0, 0, 0, 0.75,);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .navbar{
+    transform: scaleX(0);
+}
+
+.header .navbar.active{
+    transform: scaleX(1);
+}
+
+.header .navbar a{
+    margin: 0 1rem;
+    color: gold;
+    font-size: 1.6rem;
+    border-bottom: 0.1rem solid transparent;
+}
+
+.header .navbar .active,
+.header .navbar a:hover{
+    border-color: #5000ff;
+    padding-bottom: 0.5rem;
+}
+
+.header .buttons button{
+    cursor: pointer;
+    font-size: 2.5rem;
+    margin-left: 2rem;
+    background-color: transparent;
+    color: white;
+}
+
+.header .cart-items-container{
+    position: absolute;
+    top: 95%;
+    height: calc(100vh - 9rem);
+    width: 35rem;
+    background-color: #ffffff;
+    box-shadow: 0px 20px 14px 0px rgb(0 0 0 / 75%);
+    transform: scaleX(0);
+}
+
+.header .cart-items-container.active{
+    transform: scaleX(1);
+}
+
+.header .cart-items-container .cart-item{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.header .cart-items-container .cart-item:hover{
+    box-shadow: 0px 20px 14px 0px rgb(0 0 0 / 75%);
+}
+
+.header .cart-items-container .cart-item .fa-times{
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #000000;
+}
+
+.header .cart-items-container .cart-item img{
+    height: 7rem;
+}
+
+.header .cart-items-container .cart-item .content h3{
+    font-size: 2rem;
+    color: #000000;
+    padding-bottom: 0.5rem;
+}
+
+.header .cart-items-container .cart-item .content .price{
+    font-size: 1.5rem;
+    color: black;
+}
+
+.header .cart-items-container .btn{
+    width: 100%;
+    text-align: center;
+    border-radius: unset;
+}
+
+.header #menu-btn{
+    display: none;
+}
+
+
+.home{
+    min-height: 100vh;
+    background: url("https://r.resimlink.com/RScZx.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-top: -14.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.home .content{
+    max-width: 60rem;
+}
+
+.home .content h3{
+    font-size: 6rem;
+    color: white;
+}
+
+.home .content p{
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.8;
+    padding: 1rem 0;
+    color: #ccc;
+}
+
+
+.menu .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+}
+
+.menu .box-container .box{
+    padding: 3rem;
+    background-color: white;
+    border-radius: 3rem;
+    background-color: white;
+    min-height: 60rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.menu .box-container .box img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.menu .box-container .box .menu-category{
+    font-size: 1.2rem;
+}
+
+
+.menu .box-container .box h3{
+    font-size: 3rem;
+    padding: 1rem 0;
+}
+
+.menu .box-container .box .price{
+    font-size: 2.5rem;
+    padding: 0.5rem 0;
+}
+
+.menu .box-container .box .price span{
+    font-size: 1.5rem;
+    text-decoration: line-through;
+    font-weight: 300;
+}
+
+
+.products .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+}
+
+.products .box-container .box{
+    text-align: center;
+    background-color: white;
+    position: relative;
+    border-radius: 3rem;
+    height: 60rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem;
+}
+
+.products .box-container .box .box-head{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    z-index: 10;
+}
+
+
+.products .box-container .box .box-head .title{
+    font-size: 1.4rem;
+}
+
+.products .box-container .box .box-head .name{
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: start;
+    overflow-wrap: anywhere;
+}
+
+.products .box-container img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    border-radius: 3rem;
+}
+
+.products .box-container .box-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.products .box-container .box-bottom .info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.products .box-container .box-bottom .info .price{
+    font-size: 3rem;
+}
+
+.products .box-container .box-bottom .info .amount{
+    font-size: 1.4rem;
+}
+
+.products .box-container .box-bottom .product-btn a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 6.5rem;
+    height: 6.5rem;
+    border: 0.2rem solid #8f00ff;
+}
+
+.products .box-container .box-bottom .product-btn a i{
+    font-size: 1.6rem;
+    color: #8f00ff;
+}
+
+
+.about .row{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2rem;
+}
+
+.about .row .image{
+    flex: 1 1 45rem;
+}
+
+.about .row img{
+    width: 100%;
+}
+
+.about .row .content{
+    flex: 1 1 45rem;
+}
+
+.about .row .content h3{
+    font-size: 3rem;
+    color: white;
+}
+
+.about .row .content p{
+    font-size: 1.6rem;
+    color: #ccc;
+    padding: 1rem 0;
+    line-height: 1.8;
+}
+
+
+.review .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+}
+
+.review .box-container .box{
+    border: var(--border);
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: white;
+    border-radius: 3rem;
+}
+
+.review .box-container .box p{
+    font-size: 1.5rem;
+    line-height: 1.8;
+    padding: 2rem 0;
+}
+
+.review .box-container .box .user{
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.review .box-container .box h3{
+    padding: 1rem 0;
+    font-size: 2rem;
+    color: #8f00ff;
+}
+
+.review .box-container .box .stars i{
+    font-size: 1.5rem;
+    color: gold;
+}
+
+
+.contact .row{
+    display: flex;
+    background-color: black;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.contact .row .map{
+    flex: 1 1 45rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+.contact .row form{
+    flex: 1 1 45rem;
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.contact .row form h3{
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    color: #ffffff;
+}
+
+.contact .row form .inputBox{
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+    border: 0.1rem solid rgba(255, 255, 255, 0.4);
+}
+
+.contact .row form .inputBox i{
+    color: #ffffff;
+    font-size: 2rem;
+    padding-left: 2rem;
+}
+
+.contact .row form .inputBox input{
+    width: 100%;
+    padding: 2rem;
+    font-size: 1.7rem;
+    color: #ffffff;
+    text-transform: none;
+    background: none;
+}
+
+.contact .row form .btn{
+    color: #000000;
+    background-color: #5000ff;
+    font-weight: bold;
+}
+
+.contact .row form .btn:hover{
+    color: #5000ff;
+    background-color: #ffffff;
+}
+
+
+.blogs .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 1.5rem;
+}
+
+.blogs .box-container .box{
+    background-color: #ffffff;
+    border-radius: 3rem;
+}
+
+.blogs .box-container .box .image{
+    height: 25rem;
+    overflow: hidden;
+    width: 100%;
+    border-top-left-radius: 3rem;
+    border-top-right-radius: 3rem;
+}
+
+.blogs .box-container .box .image img{
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.blogs .box-container .box:hover .image img{
+    transform: scale(1.2);
+}
+
+.blogs .box-container .box .content{
+    padding: 2rem;
+}
+
+.blogs .box-container .box .content a:hover{
+    color: #5000ff;
+}
+
+.blogs .box-container .box .content .title{
+    line-height: 1.5;
+    font-size: 2.6rem;
+}
+
+.blogs .box-container .box .content span{
+    color: #262626;
+    display: block;
+    padding-top: 1rem;
+    font-size: 1.8rem;
+}
+
+.blogs .box-container .box .content p{
+    font-size: 1.6rem;
+    line-height: 1.8;
+    color: #515151;
+    padding: 1rem 0;
+}
+
+
+.footer{
+    background-color: #000000;
+    text-align: center;
+}
+
+.footer .search{
+    display: flex;
+    justify-content: center;
+}
+.footer .search .search-input{
+    width: 30rem;
+    border: 0.1rem solid rgba(255, 255, 255, 0.4);
+}
+
+.footer .search .btn{
+    background-color: #5000ff;
+    color: #ffffff;
+    padding: 1rem 2rem;
+    margin-left: 1rem;
+}
+
+.footer .search .btn:hover{
+    background-color: #ffffff;
+    color: #5000ff;
+}
+
+.footer .share{
+    padding: 2rem 0;
+}
+
+.footer .share a{
+    width: 5rem;
+    height: 5rem;
+    line-height: 5rem;
+    color: #ffffff;
+    font-size: 2.2rem;
+    border: 0.1rem solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    margin: 0.3rem;
+}
+
+.footer .share a:hover{
+    background-color: #5000ff;
+}
+
+.footer .links{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer .links a{
+    background-color: #5000ff;
+    padding: 0.7rem 2rem;
+    color: ffffff;
+    font-size: 2rem;
+    border: 0.1rem solid rgba(255, 255, 255, 0.4);
+}
+
+.footer .links a:hover{
+    background-color: #ffffff;
+    color: #5000ff;
+}
+
+.footer .links a.active{
+    background-color: #ffffff;
+    color: #5000ff;
+}
+
+.footer .credit{
+    font-size: 2rem;
+    color: #ffffff;
+    font-weight: 300;
+    padding-top: 1.5rem;
+}
+
+.footer .credit span{
+    color: #5000ff;
+}
+
+
+@media(max-width: 2560px){
+    html{
+        font-size: 55%;
+    }
+    
+    .header{
+        padding: 1.5rem 2rem;
+    }
+    
+    .header #menu-btn{
+        display: inline-block;
+    }
+    
+    .header .logo img{
+        height: 7rem;
+    }
+    
+    section{
+        padding: 2rem;
+    }
+    
+    .products .box-container .box .box-head .name{
+        font-size: 3.4rem;
+    }
+}
+
+@media(max-width: 1440px){
+    html{
+        font-size: 55%;
+    }
+    
+    .header{
+        padding: 1.5rem 2rem;
+    }
+    
+    .header #menu-btn{
+        display: inline-block;
+    }
+    
+    .header .logo img{
+        height: 7rem;
+    }
+    
+    section{
+        padding: 2rem;
+    }
+    
+    .products .box-container .box .box-head .name{
+        font-size: 3.4rem;
+    }
+    
+}
+
+@media(max-width: 1024px){
+    html{
+        font-size: 55%;
+    }
+    
+    .header{
+        padding: 1.5rem 2rem;
+    }
+    
+    .header #menu-btn{
+        display: inline-block;
+    }
+    
+    .header .logo img{
+        height: 7rem;
+    }
+    
+    section{
+        padding: 2rem;
+    }
+    
+    .products .box-container .box .box-head .name{
+        font-size: 3.4rem;
+    }
+    
+}
+
+@media(max-width: 921px){
+    html{
+        font-size: 55%;
+    }
+    
+    .header{
+        padding: 1.5rem 2rem;
+    }
+    
+    .header #menu-btn{
+        display: inline-block;
+    }
+    
+    .header .logo img{
+        height: 7rem;
+    }
+    
+    section{
+        padding: 2rem;
+    }
+    
+    .products .box-container .box .box-head .name{
+        font-size: 3.4rem;
+    }
+    
+}
+
+@media(max-width: 768px){
+    .header #menu-btn{
+        display: inline-block;
+    }
+    
+    .header .search-form{
+        width: 40rem;
+    }
+    
+    .header .navbar{
+        position: absolute;
+        top: 95%;
+        background-color: #ffffff;
+        height: calc(100vh - 9rem);
+        width: 30rem;
+        box-shadow: 0px 20px 14px 0px rgb(0 0 0 / 75%);
+        right: -100%;
+    }
+    
+    .header .navbar.active{
+        right: 3rem;
+    }
+    
+    .header .navbar a{
+        color: #000000;
+        display: block;
+        margin: 1.5rem;
+        padding: 0.5rem;
+        font-size: 2rem;
+    }
+}
+
+@media(max-width: 576px){
+    html{
+        font-size: 50%;
+    }
+    
+    section a .ads{
+        width: 536px;
+        padding: 0 2rem;
+    }
+    
+    section a .ads-pro{
+        width: 536px;
+        height: 256px;
+        padding: 0 2rem;
+        
+    }
+}
+
+@media(max-width: 412px){
+    html{
+        font-size: 50%;
+    }
+    
+    section a .ads{
+        width: 380px;
+        height: 55px;
+    }
+    
+    section a .ads-pro{
+        width: 380px;
+        height: 190px;
+    }
+}
+</style>
+
+</head>
+<body>
+    <!--! header section start -->
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="https://r.resimlink.com/IP2DBW.png" alt="logo">
+        </a>
+        <nav class="navbar">
+            <a href="#Anasayfa" class="active">Ana Sayfa</a>
+            <a href="#Dersler">Dersler</a>
+            <a href="#Kurslar">Kurslar</a>
+            <a href="#Hakkımızda">Hakkımızda</a>
+            <a href="#Yorumlar">Yorumlar</a>
+            <a href="#İletişim">İletişim</a>
+            <a href="#Bloğumuz">Bloğumuz</a> 
+        </nav>
+        <div class="buttons">
+            <button id="search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+            <button id="cart-btn">
+                <i class="fas fa-shopping-cart"></i>
+            </button>
+            <button id="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <div class="search-form">
+            <input type="text" class="search-input" id="search-box" placeholder="Sayfada Ara">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="cart-items-container">
+            <div class="cart-item">
+                <i class="fas fa-times"></i>
+                <img src="https://r.resimlink.com/M2HRwaD7.png" alt="sipariş">
+                <div class="content">
+                    <h3>HTML Full Kurs</h3>
+                    <div class="price">89.99₺</div>
+                </div>
+            </div>
+            <div class="cart-item">
+                <i class="fas fa-times"></i>
+                <img src="https://r.resimlink.com/8i_Ge.png" alt="sipariş">
+                <div class="content">
+                    <h3>CSS Full Kurs</h3>
+                    <div class="price">79.99₺</div>
+                </div>
+            </div>
+            <div class="cart-item">
+                <i class="fas fa-times"></i>
+                <img src="https://r.resimlink.com/BM3xf_.png" alt="sipariş">
+                <div class="content">
+                    <h3>JS Full Kurs</h3>
+                    <div class="price">109.99₺</div>
+                </div>
+            </div>
+            <a href="#" class="btn">Siparişi Tamamla</a>
+        </div>
+    </header>
+    <!--! header section end -->
+    
+    <!--! home section start -->
+    <section class="home" id="Anasayfa">
+        <div class="content">
+            <h3>D4RK L1BERA | Web Dizayn</h3>
+        <p>Hepiniz İnat edip bir gecede yaptığım bu naçizane web sayfasına hoşgeldiniz sevgili dostlarım.</p>
+        <a href="#İletişim" class="btn">Bize Ulaş</a>
+        </div>
+        </section>
+    <!--! home section end -->
+    
+    <!--! menu section start -->
+    <section class="menu" id="Dersler">
+        <h1 class="heading">Ders <span>Menüsü</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <div class="box-head">
+                    <img src="https://r.resimlink.com/BM3xf_.png" alt="menu">
+                    <span class="menu-category">JAVASCRİPT</span>
+                    <h3>JavaScript Dersleri</h3>
+                    <div class="price">69.99₺ <span>119.99₺</span></div>
+                </div>
+                <div class="box-bottom">
+                    <a href="#" class="btn">Derse Git</a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-head">
+                    <img src="https://r.resimlink.com/4gjTa6Q.png" alt="menu">
+                    <span class="menu-category">PYTHON</span>
+                    <h3>Python Dersleri</h3>
+                    <div class="price">69.99₺ <span>119.99₺</span></div>
+                </div>
+                <div class="box-bottom">
+                    <a href="#" class="btn">Derse Git</a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-head">
+                    <img src="https://r.resimlink.com/M2HRwaD7.png" alt="menu">
+                    <span class="menu-category">HTML</span>
+                    <h3>Html Dersleri</h3>
+                    <div class="price">69.99₺ <span>119.99₺</span></div>
+                </div>
+                <div class="box-bottom">
+                    <a href="#" class="btn">Derse Git</a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-head">
+                    <img src="https://r.resimlink.com/8i_Ge.png" alt="menu">
+                    <span class="menu-category">CSS</span>
+                    <h3>Css Dersleri</h3>
+                    <div class="price">69.99₺ <span>119.99₺</span></div>
+                </div>
+                <div class="box-bottom">
+                    <a href="#" class="btn">Derse Git</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--! menu section end -->
+    
+    
+    <!-- earnbitmoon section start -->
+       <section>
+           <a href="https://earnbitmoon.club/?ref=476333" target="_blank"><img class="ads" src="https://earnbitmoon.club/promo/EBM-468x60.gif" alt="Earnbitmoon - ultimate faucet !" border="0" width="412" height="55"/></a>
+       </section>
+    <!-- earnbitmoon section end -->
+    
+   
+    <!--! products section start -->
+    <section class="products" id="Kurslar">
+        <h1 class="heading">Kurs <span>Menüsü</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <div class="box-head">
+                    <span class="title">HTML</span>
+                    <a href="#" class="name">HTML Full Kurs</a>
+              </div>
+              <div class="image">
+                  <img src="https://r.resimlink.com/M2HRwaD7.png" alt="HTML">
+              </div>   
+              <div class="box-bottom">
+                  <div class="info">
+                      <b class="price">89.99₺</b>
+                      <span class="amount">63 Ders</span>
+                  </div>
+                  <div class="product-btn">
+                      <a href="#">
+                          <i class="fas fa-plus"></i>
+                      </a>
+                  </div>
+              </div>
+            </div>
+            <div class="box">
+                <div class="box-head">
+                    <span class="title">JAVASCRİPT</span>
+                    <a href="#" class="name">JS Full Kurs</a>  
+              </div>
+              <div class="image">
+                  <img src="https://r.resimlink.com/BM3xf_.png" alt="JAVASCRİPT">
+              </div>   
+              <div class="box-bottom">
+                  <div class="info">
+                      <b class="price">109.99₺</b>
+                      <span class="amount">97 Ders</span>
+                  </div>
+                  <div class="product-btn">
+                      <a href="#">
+                          <i class="fas fa-plus"></i>
+                      </a>
+                  </div>
+              </div>
+            </div>
+       
+            <div class="box">
+                <div class="box-head">
+                    <span class="title">CSS</span>
+                    <a href="#" class="name">CSS Full Kurs</a>     
+              </div>
+              <div class="image">
+                  <img src="https://r.resimlink.com/8i_Ge.png" alt="CSS">
+              </div>   
+              <div class="box-bottom">
+                  <div class="info">
+                      <b class="price">79.99₺</b>
+                      <span class="amount">50 Ders</span>
+                  </div>
+                  <div class="product-btn">
+                      <a href="#">
+                          <i class="fas fa-plus"></i>
+                      </a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </section>
+    <!--! products section end -->
+    
+    
+    <!-- tronex section start -->
+<section>
+<a href="https://www.tronex.cloud/?ref=119949"><img class="ads-pro" title="Get up to $199" alt="tronex" src="https://www.tronex.cloud/banner1.jpg" width="380" height="190"></a>
+</section>
+<!-- tronex section end -->
+
+  
+    <!--! about section start  -->
+    <section class="about" id="Hakkımızda">
+        <h1 class="heading">Ben <span>Kimim?</span></h1>
+        <div class="row">
+            <div class="image">
+                <img src="https://r.resimlink.com/wP7GOe-a.png" alt="Hakkımızda">
+            </div>
+            <div class="content">
+                <h3>D4RK L1BERA Kimdir?</h3>
+                <p>Merhaba Dostlarım, Ben D4RK L1BERA. Henüz Bir Üniversiteden Mezun Değilim, Hatta Henüz Lise 3. Sınıfı Okuyorum. Ancak Bu, Hayal Ettiğim Şeyleri Yapmam İçin Bir Engel Değil. Aksine, Beni Daha Fazla Hırslandırıyor. Hergün Daha İyisini, Daha Güzelini Yapmak İçin Çabalıyorum Ve Aklımın Kavradığı Herşey İle İlgileniyorum. İnanın Bana Aklınızın Ve Hayallerinizin Bir Sınırı Yok. Yeter Ki, Siz Yapmak İsteyin...</p>
+                <a href="#" class="btn">Devamını oku</a>
+            </div>
+        </div>
+    </section>
+    <!--! about section end -->
+    
+<!-- Coinpayu section start -->
+<section>
+    <a href="https://www.coinpayu.com/?r=D4RKL1BERA"><img class="ads" src="https://www.coinpayu.com/static/advertiser_banner/468X60.gif" alt="coinpayu" width="380" height="55"/></a>
+</section>
+<!-- Coinpayu section end -->
+    
+    <!--! review section start -->
+    <section class="review" id="Yorumlar">
+        <h1 class="heading">Üye <span>Yorumları</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="https://r.resimlink.com/i47d5MXvg0-.png" alt="Yorum">
+                <p>İlk başlarda çok fazla şüphe duymuştum ama cesaret edip satın aldım, ve tek kelime İle İnanılmazdı. Çok akıcı ve açıklayıcı bir anlatım biçimine sahip. Diksiyonu hiç bozulmuyor, dostum bu çılgınlık. Hakikaten aldığı parayı hakediyor. Denedim ve herkese tavsiye Ediyorum.</p>
+                <img src="https://r.resimlink.com/bAkHl.png" alt="Üye" class="user">
+                <h3>Umutcan Akay</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+            <div class="box">
+                <img src="https://r.resimlink.com/i47d5MXvg0-.png" alt="Yorum">
+                <p>Yeni başlayanlar İçin harika bir seçenek. Kesinlikle Tavsiye Ediyorum. Anlatış biçimi çok sade ve anlaşılır detaylarına kadar İyice anlatıyor ve sanki karşısında oturuyormuşsunuzcasına ne dediğinizi duyar gibi anlatıyor. Her konuyu anlattıktan sonra kısaca tekrar edip pekiştirmemizi sağlıyor.</p>
+                <img src="https://r.resimlink.com/LuRND.png" alt="Üye" class="user">
+                <h3>Nazlı Demir</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+            <div class="box">
+                <img src="https://r.resimlink.com/i47d5MXvg0-.png" alt="Yorum">
+                <p>Bu yaşta böyle işler yapmak gerçekten takdire şayan. Diyecek fazla birşey yok, videoyu açıyorsunuz ve akışa kapılıp gidiyorsunuz. sonra bir bakıyorsunuz artık kendi başınıza proje yapabilecek hale gelmişsiniz. Gerçekten ilginç biri, deneyimsiz deneyim desem sanırım yeri olur.</p>
+                <img src="https://r.resimlink.com/cGyqauZgU.png" alt="Üye" class="user">
+                <h3>Murat Alkan</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--! review section end -->
+    
+<!-- gemly section start -->
+<section>
+<a href="https://gemly.link/signup/?r=d4rkl1bera"><img class="ads" src="https://gemly.link/b/en/1/468x60.gif" alt="Gemly — a game where you can earn" width="380" height="55" /></a>
+</section>
+<!-- gemly section end -->
+    
+    <!--! contact section start -->
+    <section class="contact" id="İletişim">
+        <h1 class="heading">İletişim <span>Adresim</span></h1>
+        <div class="row">
+            <iframe 
+class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48151.408523072874!2d28.9850917!3d41.0370023!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab7650656bd63%3A0x8ca058b28c20b6c3!2zVGFrc2ltIE1leWRhbsSxLCBHw7xtw7zFn3N1eXUsIDM0NDM1IEJleW_En2x1L8Swc3RhbmJ1bA!5e0!3m2!1str!2str!4v1674689409903!5m2!1str!2str" 
+loading="lazy" 
+referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <form>
+                <h3>Bana Ulaşın</h3>
+                <div class="inputBox">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Ad-Soyad">
+                </div>
+                <div class="inputBox">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="E-posta">
+                </div>
+                <div class="inputBox">
+                    <i class="fas fa-phone"></i>
+                    <input type="number" placeholder="Telefon Numarası">
+                </div>
+                <input type="submit" class="btn" value="Gönder">
+            </form>
+        </div>
+    </section>
+    <!--! contact section end -->
+    
+<!-- clicksfly section start -->
+<section>
+<a href="https://clicksfly.com/ref/d4rkl1bera"><img class="ads" src="https://clicksfly.com/img/ref/clicksglygifbanner.gif" title="ClicksFly - Shorten URLs and Earn Money"/></a>
+</section>
+<!-- clicksfly section end -->
+    
+    <!--! blogs section start -->
+    <section class="blogs" id="Bloğumuz">
+        <h1 class="heading">Blog <span>Akışı</span></h1>
+        <div class="box-container">
+            <div class="box">
+               <div class="image">
+                <img src="https://r.resimlink.com/dcC640twMAgR.png" alt="blog">
+               </div>
+               <div class="content">
+                   <a href="#" class="title">Uygulama Nasıl Yapılır?</a>
+                   <span>D4RK L1BERA / 26 Ocak 2023</span>
+                   <p>Öncelikle, şunu bilmenizi İstiyorum dostlarım. Uygulama yapmak İçin bir çok yol ve alternatif var. Elimden geldiğince detaylı şekilde anlatacağım.</p>
+                   <a href="#" class="btn">Devamını Oku</a>
+               </div>
+            </div>
+            <div class="box">
+               <div class="image">
+                <img src="https://r.resimlink.com/0GAsPW8.png" alt="blog">
+               </div>
+               <div class="content">
+                   <a href="#" class="title">Web Site Nasıl Yapılır?</a>
+                   <span>D4RK L1BERA / 26 Ocak 2023</span>
+                   <p>Öncelikle, şunu bilmenizi İstiyorum dostlarım. Site yapmak İçin bir çok yol ve alternatif var. Elimden geldiğince detaylı şekilde anlatacağım.</p>
+                   <a href="#" class="btn">Devamını Oku</a>
+               </div>
+            </div>
+            <div class="box">
+               <div class="image">
+                <img src="https://r.resimlink.com/6aXtLQ.png" alt="blog">
+               </div>
+               <div class="content">
+                   <a href="#" class="title">Oyun Nasıl Yapılır?</a>
+                   <span>D4RK L1BERA / 26 Ocak 2023</span>
+                   <p>Öncelikle, şunu bilmenizi İstiyorum dostlarım. Oyun yapmak İçin bir çok yol ve alternatif var. Elimden geldiğince detaylı şekilde anlatacağım.</p>
+                   <a href="#" class="btn">Devamını Oku</a>
+               </div>
+            </div>
+        </div>
+    </section>
+    <!--! blogs section end -->
+
+<!-- dogeminingpaid section start -->
+<section>
+<a href="https://dogeminingpaid.com/?ref=d4rkl1bera" target="_blank"><img class="ads" src="https://dogeminingpaid.com/assets/banners/468.gif"></a>
+</section>
+<!-- dogeminingpaid section end -->
+
+    <!--! footer section start -->
+    <section class="footer">
+        <div class="search">
+            <input type="text" class="search-input" placeholder="Ara">
+            <button class="btn btn-primary">
+                <a href="#">Ara</a>
+            </button>
+        </div>
+        <div class="share">
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-youtube"></a>
+            <a href="#" class="fab fa-tiktok"></a>
+            <a href="#" class="fab fa-facebook"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+        </div>
+        <div class="links">
+            <a href="#" class="active">Ana Sayfa</a>
+            <a href="#Hakkımızda">Hakkımızda</a>
+            <a href="#Dersler">Dersler</a>
+            <a href="#Kurslar">Kurslar</a>
+            <a href="#Yorumlar">Yorumlar</a>
+            <a href="#İletişim">İletişim</a>
+            <a href="#Bloğumuz">Bloğumuz</a>
+        </div>
+        
+        <div class="credit">
+            <span>D4RK L1BERA</span> tarafından yapılmıştır. | Tüm Hakları Saklıdır.
+        </div>
+    </section>
+    <!--! footer section end -->
+    
+    <script>        
+const searchForm = document.querySelector(".search-form");
+const cartItem = document.querySelector(".cart-items-container");
+const navbar = document.querySelector(".navbar");
+//! buttons
+
+const searchBtn = document.querySelector("#search-btn");
+const cartBtn = document.querySelector("#cart-btn");
+const menuBtn = document.querySelector("#menu-btn");
+
+searchBtn.addEventListener("click", function () {
+    searchForm.classList.toggle("active");
+    document.addEventListener("click", function (e) {
+        if(
+        !e.composedPath().includes(searchBtn) && !e.composedPath().includes(searchForm)
+        ) {
+            searchForm.classList.remove("active")
+        }
+    })
+})
+
+cartBtn.addEventListener("click", function () {
+    cartItem.classList.toggle("active");
+    document.addEventListener("click", function (e) {
+        if(
+        !e.composedPath().includes(cartBtn) && !e.composedPath().includes(cartItem)
+        ) {
+            cartItem.classList.remove("active")
+        }
+    })
+})
+
+menuBtn.addEventListener("click", function () {
+    navbar.classList.toggle("active");
+    document.addEventListener("click", function (e) {
+        if(
+        !e.composedPath().includes(menuBtn) && !e.composedPath().includes(navbar)
+        ) {
+            navbar.classList.remove("active")
+        }
+    })
+})
+    </script>
+</body>
