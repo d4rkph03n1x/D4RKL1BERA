@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D4RK L1BERA</title>
+    <style>
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #0a261f;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+#posts {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #51e5a1;
+}
+
+h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.author {
+  text-align: right;
+  font-style: italic;
+}
+
+button {
+  background-color: #a1e5f5;
+  color: #0a261f;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #17e7b7;
+}
+    </style>
+  </head>
+  <body>
+    <h1>D4RK L1BERA</h1>
+    <div id="posts"></div>
+    <script>
+        const postsDiv = document.querySelector('#posts');
+
+// Gönderi verilerinin tutulduğu dizi
+let posts = [];
+
+// Gönderi gösterimini oluşturur
+function showPosts() {
+  postsDiv.innerHTML = '';
+
+  if (posts.length === 0) {
+    const noPostMessage = document.createElement('p');
+    noPostMessage.textContent = 'Henüz gönderi yok.';
+    postsDiv.appendChild(noPostMessage);
+  } else {
+    const ul = document.createElement('ul');
+
+    posts.forEach(post => {
+      const li = document.createElement('li');
+
+      li.innerHTML = `
+        <h2>${post.title}</h2>
+        <img src="${post.imageUrl}" alt="${post.title}" />
+        <p>${post.content}</p>
+        <p class="author">Yazar: ${post.author}</p>
+      `;
+
+      ul.appendChild(li);
+    });
+
+    postsDiv.appendChild(ul);
+  }
+}
+
+// Sayfa yüklendiğinde gönderileri yükle
+window.addEventListener('load', () => {
+  const postsJson = localStorage.getItem('posts');
+  if (postsJson !== null) {
+    posts = JSON.parse(postsJson);
+    showPosts();
+  }
+});
+    </script>
+  </body>
+</html>

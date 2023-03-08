@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Gönderisi Oluşturma ve Silme Formu</title>
+    <style>
+        * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0a261f;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+input,
+textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+input[type="text"],
+textarea {
+  background-color: #fff;
+  font-size: 1.2rem;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 3px 2px #51e5a1;
+}
+
+#submit-btn,
+#delete-btn {
+  background-color: #17e7b7;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#submit-btn:hover,
+#delete-btn:hover {
+  background-color: #a1e5f5;
+}
+
+#posts {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.post {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.post img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.post h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.post p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.post span {
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  form {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  label,
+  input,
+  textarea {
+    width: 48%;
+  }
+
+  #submit-btn,
+  #delete-btn {
+    width: 20%;
+  }
+
+  #posts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+
+  .post {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  #posts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Blog Gönderisi Oluşturma ve Silme Formu</h1>
+      <form>
+        <label for="title">Başlık</label>
+        <input type="text" id="title" name="title" required />
+
+        <label for="author">Yazar Adı</label>
+        <input type="text" id="author" name="author" required />
+
+        <label for="image-url">Fotoğraf URL</label>
+        <input type="text" id="image-url" name="image-url" required />
+
+        <label for="content">İçerik</label>
+        <textarea id="content" name="content" required></textarea>
+
+        <button type="submit" id="submit-btn">Gönder</button>
+      </form>
+
+      <form>
+        <label for="delete">Silme Formu</label>
+        <select id="delete" name="delete"></select>
+
+        <button type="submit" id="delete-btn">Sil</button>
+      </form>
+
+      <div id="posts"></div>
+    </div>
+
+    <script>
+        const form = document.querySelector('form');
+const titleInput = document.querySelector('#title');
+const authorInput = document.querySelector('#author');
+const imageUrlInput = document.querySelector('#image-url');
+const contentInput = document.querySelector('#content');
+const deleteForm = document.querySelectorAll('form')[1];
+const deleteSelect = document.querySelector('#delete');
+const postsDiv = document.querySelector('#posts');
+
+// Gönderi verilerinin tutulduğu dizi
+let posts = [];
+
+// Gönderi gösterimini oluşturur
+function showPosts() {
+  postsDiv.innerHTML = '';
+
+  if (posts.length === 0) {
+    const noPostMessage = document.createElement('p');
+    noPostMessage.textContent = 'Henüz gönderi yok.';
+    postsDiv.appendChild(noPostMessage);
+  } else {
+    const ul = document.createElement('ul');
+
+    posts.forEach((post, index) => {
+      const li = document.createElement('li');
+      const deleteButton = document.createElement('button');
+
+      li.innerHTML = `
+        <h2>${post.title}</h2>
+        <img src="${post.imageUrl}" alt="${post.title}" />
+        <p>${post.content}</p>
+        <p class="author">Yazar: ${post.author}</p>
+      `;
+
+      deleteButton.textContent = 'Sil';
+      deleteButton.addEventListener('click', () => {
+        deletePost(index);
+      });
+
+      li.appendChild(deleteButton);
+      ul.appendChild(li);
+    });
+
+    postsDiv.appendChild(ul);
+  }
+}
+
+// Gönderiyi siler
+function deletePost(index) {
+  posts.splice(index, 1);
+  localStorage.setItem('posts', JSON.stringify(posts));
+  updateDeleteForm();
+  showPosts();
+}
+
+// Silme formunu günceller
+function updateDeleteForm() {
+  deleteSelect.innerHTML = '';
+
+  if (posts.length === 0) {
+    const option = document.createElement('option');
+    option.textContent = 'Henüz gönderi yok.';
+    deleteSelect.appendChild(option);
+    deleteForm.style.display = 'none';
+  } else {
+    posts.forEach((post, index) => {
+      const option = document.createElement('option');
+      option.value = index;
+      option.textContent = post.title;
+      deleteSelect.appendChild(option);
+    });
+
+    deleteForm.style.display = 'block';
+  }
+}
+
+// Formu gönderir
+form.addEventListener('submit', event => {
+  event.preventDefault();
+
+  const post = {
+    title: titleInput.value,
+    author: authorInput.value,
+    imageUrl: imageUrlInput.value,
+    content: contentInput.value
+  };
+
+  posts.push(post);
+  localStorage.setItem('posts', JSON.stringify(posts));
+  form.reset();
+  updateDeleteForm();
+  showPosts();
+});
+
+// Sayfa yüklendiğinde gönderileri yükle
+window.addEventListener('load', () => {
+  const postsJson = localStorage.getItem('posts');
+  if (postsJson !== null) {
+    posts = JSON.parse(postsJson);
+    showPosts();
+    updateDeleteForm();
+  }
+});
+
+// Silme formu gönderimini işle
+deleteForm.addEventListener('submit', event => {
+  event.preventDefault();
+  const selectedIndex = deleteSelect.value;
+  deletePost(selectedIndex);
+});
+    </script>
+  </body>
+</html>
